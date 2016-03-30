@@ -1,0 +1,15 @@
+apply plugin: 'spring-boot'
+
+dependencies {
+    compile project(":common-source")
+
+    compile "org.springframework.boot:spring-boot-starter-web"
+
+    /*compile "org.springframework.security:spring-security-config:4.0.2.RELEASE"
+    compile "org.springframework.security:spring-security-messaging:4.0.2.RELEASE"
+    compile "org.springframework.security:spring-security-web:4.0.2.RELEASE"*/
+
+    compile "org.springframework.boot:spring-boot-starter-websocket"
+
+    testCompile "junit:junit:4.11"
+}

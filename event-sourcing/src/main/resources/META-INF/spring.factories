@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.example.myeventsourcing.event.EventSourcingAutoConfiguration,\
+com.example.myeventsourcing.event.MongoAutoConfiguration

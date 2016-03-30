@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="springPortfolio">
+<head>
+    <meta charset="utf-8">
+    <title>Stock Trading Portfolio</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <!--<link href="webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link href="webjars/flat-ui/bcaf2de95e/css/flat-ui.css" rel="stylesheet">-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flat-ui/2.2.2/css/flat-ui.css" rel="stylesheet">
+    <link href="css/portfolio.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" ng-controller="PortfolioController">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <a class="navbar-brand" href="#">Example Cargo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-01">
+            <a class="btn btn-default navbar-btn navbar-right logout" href="logout.html" target="_self" ng-click="logout()">
+                <span class="glyphicon glyphicon glyphicon-off"></span>
+            </a>
+        </div>
+    </nav>
+    <div id="main-content">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th colspan="3">List Cargos</th>
+                <th class="trade-buttons">
+                    <button class="btn btn-primary" ng-click="openTradeModal('save')">New Cargo</button>
+                </th>
+
+            </tr>
+            <tr>
+                <th class="number">Id</th>
+                <th class="number">Customer Id</th>
+                <th class="number">Amount</th>
+                <th class="number">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="position in positions">
+                <td class="number">{{position.id}}</td>
+                <td class="number">{{position.customerId}}</td>
+                <td class="number">{{position.amount | currency:"$"}}</td>
+                <td class="number">{{position.status}}</td>
+            </tr>
+            </tbody>
+            <tfoot></tfoot>
+            <tbody></tbody>
+        </table>
+    </div>
+    <div class="alert alert-warning">
+        <h5>Notifications</h5>
+        <ul>
+            <li ng-repeat="notification in notifications">{{notification}}</li>
+        </ul>
+    </div>
+</div>
+<script type="text/ng-template" id="tradeModal.html">
+    <form class="form-horizontal">
+        <div class="modal-header">
+            <h4 class="modal-title">Reception Cargo</h4>
+        </div>
+        <div class="modal-body">
+            <div class="control-group">
+                <label class="control-label" for="selectCustomer">Customer</label>
+                <div class="control">
+                    <select id="selectCustomer" ng-model="selectedCustomer" ng-options="item.id as item.name for item in customers">
+                        <option value="">Select Customer</option>
+                    </select>
+                </div>
+                <label class="control-label" for="inputAmount">Amount</label>
+                <div class="controls">
+                    <input id="inputAmount" type="text" ng-model="amount">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="trade()">Trade</button>
+        </div>
+    </form>
+</script>
+
+<!-- 3rd party -->
+<!--<script src="webjars/jquery/jquery.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!--<script src="webjars/bootstrap/js/bootstrap.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--<script src="webjars/sockjs-client/sockjs.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/sockjs/1.0.3/sockjs.min.js"></script>
+
+<!--<script src="webjars/stomp-websocket/stomp.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+<!--<script src="webjars/angular/angular.min.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<!--<script src="webjars/angular-ui-bootstrap-bower/ui-bootstrap.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap.min.js"></script>
+
+<!--<script src="webjars/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js"></script>
+
+<!-- application -->
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+
+</body>
+</html>

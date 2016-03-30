@@ -1,0 +1,15 @@
+include 'event-sourcing'
+include 'common-swagger'
+include 'common-source'
+include 'common-web'
+include 'common-websocket'
+include 'cargo'
+include 'customer'
+include 'financial'
+include 'api-gateway'
+include 'config-server'
+include 'webservice-registry'
+include 'restApi-master'
+
+rootProject.name = 'es-cargo-netflix'
+
