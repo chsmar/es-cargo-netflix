@@ -1,3 +1,6 @@
+auth-server:
+  uri: http://localhost:9999/uaa
+
 # Define the port where the API gateway server would be running
 server:
   port: 8765
@@ -11,12 +14,36 @@ server:
 # requests using zuul
 zuul:
   routes:
-    cargo:     /api/**
-    customer:  /api/**
-    financial: /api/**
+    cargo:
+      path: /cargo/**
+      serviceId: cargo
+    customer:
+      path: /customer/**
+      serviceId: customer
+    financial:
+      path: /financial/**
+      serviceId: financial
+    user:
+      path: /user/**
+      url: ${auth-server.uri}/user
 
 # Define the Eureka server that handles service registration
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+# Define security
+security:
+  user:
+    password: password
+  oauth2:
+    client:
+      accessTokenUri: ${auth-server.uri}/oauth/token
+      userAuthorizationUri: ${auth-server.uri}/oauth/authorize
+      clientId: client
+      clientSecret: secret
+      scope: read
+    resource:
+      userInfoUri: ${auth-server.uri}/user
+

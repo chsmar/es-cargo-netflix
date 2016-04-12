@@ -10,6 +10,7 @@ include 'api-gateway'
 include 'config-server'
 include 'webservice-registry'
 include 'restApi-master'
+include 'auth-server'
 
 rootProject.name = 'es-cargo-netflix'
 
