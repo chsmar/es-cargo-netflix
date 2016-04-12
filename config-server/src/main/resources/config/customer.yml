@@ -15,3 +15,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:9999/uaa/user
