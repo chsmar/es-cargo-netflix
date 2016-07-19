@@ -9,7 +9,6 @@ include 'financial'
 include 'api-gateway'
 include 'config-server'
 include 'webservice-registry'
-include 'restApi-master'
 
 rootProject.name = 'es-cargo-netflix'
 
